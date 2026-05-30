@@ -1,5 +1,7 @@
 # Startup Sound Changer
 
+中文 | [English](README.en.md)
+
 一个 Windows 小工具，用来换开机声音，也顺手支持关机声音。
 
 界面很简单：打开后选择“设置开机音”或“设置关机音”，可以从内置预设里选，也可以选择自己的音频文件。
