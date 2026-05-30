@@ -1,0 +1,22 @@
+.venv/
+build/
+dist/
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Local build scratch files
+build-assets/
+
+# Local logs and temporary outputs
+*.log
+*.tmp
+*.mun
+*.dll
+
+# IDE/editor files
+.vscode/
+.idea/
+*.swp
+*.swo

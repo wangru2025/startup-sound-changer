@@ -1,0 +1,4 @@
+wxPython==4.2.5
+soundfile==0.13.1
+imageio-ffmpeg==0.6.0
+pyinstaller==6.20.0
