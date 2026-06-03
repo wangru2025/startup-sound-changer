@@ -277,10 +277,27 @@ def _delete_service() -> None:
         _raise_process_error(completed, "service delete failed")
 
 
+def _get_powershell_path() -> str:
+    """Get the path to powershell.exe, with fallback options."""
+    # Try common PowerShell locations in order
+    candidates = [
+        Path("C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"),
+        Path("C:\\Program Files\\PowerShell\\7\\pwsh.exe"),
+        Path("C:\\Program Files (x86)\\PowerShell\\7\\pwsh.exe"),
+    ]
+    
+    for candidate in candidates:
+        if candidate.exists():
+            return str(candidate)
+    
+    # Fallback to just "powershell" and let Windows search PATH
+    return "powershell.exe"
+
+
 def _set_service_preshutdown_timeout() -> None:
-    script = "& { param($serviceName, $timeoutMs) $path = 'HKLM:\\SYSTEM\\CurrentControlSet\\Services\\' + $serviceName; New-ItemProperty -Path $path -Name PreshutdownTimeout -PropertyType DWord -Value ([int]$timeoutMs) -Force | Out-Null }"
+    script = "& { param($serviceName, $timeoutMs) $path = 'HKLM:\\SYSTEM\\CurrentControlSet\\Services\\' + $serviceName; New-ItemProperty -Path $path -Name PreshutdownTimeout -PropertyType DWord -Value $timeoutMs -Force | Out-Null; } "
     _run_checked([
-        "powershell",
+        _get_powershell_path(),
         "-NoProfile",
         "-ExecutionPolicy",
         "Bypass",
