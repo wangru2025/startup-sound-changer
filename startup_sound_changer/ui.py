@@ -96,6 +96,7 @@ class MainFrame(wx.Frame):
             "\u8bbe\u7f6e\u5173\u673a\u58f0\u97f3\u3002\u5e94\u7528\u540e\u4f1a\u5728\u5f53\u524d\u7528\u6237\u914d\u7f6e\u76ee\u5f55\u4fdd\u5b58\u97f3\u9891\u548c\u8bbe\u7f6e\u3002"
             if is_shutdown
             else "\u76f4\u63a5\u4fee\u6539 imageres.dll \u5185\u7684\u542f\u52a8\u58f0\u97f3\u8d44\u6e90\uff0c\u4e0d\u518d\u4f7f\u7528 Resource Hacker\u3002"
+            # Alternative: Resource Cracker https://www.pelock.com/products/resource-cracker
         )
         intro = wx.StaticText(self.panel, label=intro_label)
         intro.Wrap(700)
